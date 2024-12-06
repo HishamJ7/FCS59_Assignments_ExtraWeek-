@@ -1,0 +1,159 @@
+//Problem 1: Pyramid of Numbers
+
+const rows = 4;  
+for (let i = 1; i <= rows; i++) {
+    let line = '';
+    for (let j = 1; j <= i; j++) {
+        line += j + ' ';}
+    console.log(line);}
+
+
+
+//Problem 2: Fibonacci Nbrs
+
+const n = 5;  
+let fib = [0, 1];
+for (let i = 2; i < n; i++) {
+    fib.push(fib[i - 1] + fib[i - 2]);
+}
+console.log(fib);
+
+
+//Problem 3: Divisible by 3 and 5
+
+const x = 30;  
+for (let i = 1; i <= x; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+        console.log(i);}}
+
+
+
+//Problem 4: Sum of odd Numbers
+
+const n = 10;  
+let sum = 0;
+for (let i = 1; i <= n; i++) {
+    if (i % 2 !== 0) {
+        sum += i;
+    }
+}
+console.log("Sum of odd numbers: " + sum);
+
+
+
+//Problem 5: Max Profit Stock Prices
+
+const prices = [7, 1, 5, 3, 6, 4];  
+let minPrice = prices[0];
+let maxProfit = 0;
+for (let i = 1; i < prices.length; i++) {
+    let potentialProfit = prices[i] - minPrice;
+    maxProfit = Math.max(maxProfit, potentialProfit);
+    minPrice = Math.min(minPrice, prices[i]);
+}
+console.log("Maximum profit:", maxProfit);
+
+
+//Problem 6: Special Rearrangement.
+
+const special_rearrangement = (nums) => {
+    let evens = [];
+    let odds = [];
+    for (let num of nums) {
+        if (num % 2 === 0) evens.push(num);
+        else odds.push(num);
+    }
+    return evens.concat(odds);
+};
+console.log(special_rearrangement([2, 3, 4, 1, 6, 5]));
+
+
+//Problem 7: Find Peaks
+
+const find_peaks = (array) => {
+    let peaks = [];
+    for (let i = 1; i < array.length - 1; i++) {
+        if (array[i] > array[i - 1] && array[i] > array[i + 1]) {
+            peaks.push(i);
+        }}
+    return peaks;};
+console.log(find_peaks([1, 3, 2, 5, 8, 6, 7]));
+
+
+
+//Problem 8: Longest Subarray with Equal 0 and 1s
+
+const longest_subarray = (array) => {
+    let maxLength = 0;
+    let count = 0;
+    let hashMap = {0: -1};
+    
+    for (let i = 0; i < array.length; i++) {
+        count += (array[i] === 0 ? -1 : 1);
+        
+        if (hashMap[count] !== undefined) {
+            maxLength = Math.max(maxLength, i - hashMap[count]);
+        } else {
+            hashMap[count] = i; }}
+    return maxLength;
+};
+console.log(longest_subarray([1, 0, 1, 0, 1, 1, 0]));
+
+
+
+//Problem 9: Move zero,s to the End
+
+const move_zeros = (numbers) => {
+    let count = 0;
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] !== 0) {
+            numbers[count++] = numbers[i];
+        }
+    }
+    while (count < numbers.length) {
+        numbers[count++] = 0;
+    }
+    return numbers;};
+console.log(move_zeros([1, 0, 2, 0, 3, 0, 4]));
+
+
+
+//Problem 10: Rebuild Sentence from Word Lengths
+
+const rebuild_sentence = (words, lengths) => {
+    let result = '';
+    for (let i = 0; i < words.length; i++) {
+        result += words[i].slice(0, lengths[i]) + ' ';
+    }
+    return result.trim();};
+console.log(rebuild_sentence(["the", "sky", "is", "blue"], [3, 2, 2, 1]));
+
+
+
+//Problem 11: Salary Management Script
+
+const salary = 2500;  
+const month = "December";  
+const savingsPercent = 0.20;
+const rentPercent = 0.30;
+const electricityPercent = 0.10;
+const additionalSavings = 50;
+const savings = salary * savingsPercent;
+const rent = salary * rentPercent;
+const electricity = salary * electricityPercent;
+const totalExpenses = savings + rent + electricity;
+const remainder = salary - totalExpenses;
+const yearlyRent = rent * 12;
+const yearlyElectricity = electricity * 12;
+const squaredSalary = Math.pow(salary, 2);
+const remainingAfterAdditionalSavings = remainder - additionalSavings / savings;
+console.log("For the month of "+month+":");
+console.log("Savings "+savings+":");
+console.log("Rent "+rent+":");
+console.log("Electricity "+electricity+":");
+console.log("Total expenses (savings, rent, electricity) "+totalExpenses+":");
+console.log("Remaining salary after expenses "+remainder+":");
+console.log("Yearly rent "+yearlyRent+":");
+console.log("Yearly electricity "+yearlyElectricity+":");
+console.log("Squared salary "+squaredSalary+":");
+console.log("Remaining after saving extra "+remainingAfterAdditionalSavings+":");
